@@ -5,41 +5,69 @@
 	    input{color:white; width: 80px; height: 80px; background-color:green; font-family: Britannic, Verdana, sans-serif;font-size:20}
 	</style>
         <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+        <script>
+                 var status = 0;
+                 //Add the simbol in the button who calls the function
+                 function addSimbol(input_id)
+                     {   
+                         if((document.getElementById(input_id).value === 'X')||(document.getElementById(input_id).value === 'O'))
+                         {
+                             alert("You can't insert another symbol here.");
+                         }
+                         else if (status == 1)
+                         {
+                             if(document.getElementById(input_id).value === ' ')
+                             {
+                                 document.getElementById(input_id).value = 'X';
+                             }
+                             status = 0;
+                         } 
+                         else
+                         {
+                             if(document.getElementById(input_id).value === ' ')
+                             {
+                                 document.getElementById(input_id).value = 'O';
+                             }
+                             status = 1;
+                         }
+                     }
+                               
+        </script>
     </head>
     <body>
         <form name='tris'>
         <table align='center'>
             <tr>
                 <td>    
-                    <input type='button' value='X'>
+                    <input type='button' id='one' value=' ' onclick='addSimbol("one")'>
                 </td>
                 <td>    
-                    <input type='button' value='O'>
+                    <input type='button' id='two' value=' ' onclick='addSimbol("two")'>
                 </td>
                 <td>
-                    <input type='button' value='X'>
+                    <input type='button' id='three' value=' ' onclick='addSimbol("three")'>
                 </td>
             </tr>
             <tr>
                 <td>    
-                    <input type='button' value='X'>
+                    <input type='button' id='four' value=' ' onclick='addSimbol("four")'>
                 </td>
                 <td>    
-                    <input type='button' value='O'>
+                    <input type='button' id='five' value=' ' onclick='addSimbol("five")'>
                 </td>
                 <td>
-                    <input type='button' value='X'>
+                    <input type='button' id='six' value=' ' onclick='addSimbol("six")'>
                 </td>
             </tr>
             <tr>
                 <td>    
-                    <input type='button' value='X'>
+                    <input type='button' id='seven' value=' ' onclick='addSimbol("seven")'>
                 </td>
                 <td>    
-                    <input type='button' value='X'>
+                    <input type='button' id='eight' value=' ' onclick='addSimbol("eight")'>
                 </td>
                 <td>
-                    <input type='button' value='X'>
+                    <input type='button' id='nine' value=' ' onclick='addSimbol("nine")'>
                 </td>
             </tr>
         </table>
