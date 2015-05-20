@@ -8,30 +8,68 @@
         <script>
                  var status = 0;
                  //Add the simbol in the button who calls the function
-                 function addSimbol(input_id)
-                     {   
-                         if((document.getElementById(input_id).value === 'X')||(document.getElementById(input_id).value === 'O'))
-                         {
-                             alert("You can't insert another symbol here.");
-                         }
-                         else if (status == 1)
-                         {
-                             if(document.getElementById(input_id).value === ' ')
-                             {
-                                 document.getElementById(input_id).value = 'X';
-                             }
-                             status = 0;
-                         } 
-                         else
-                         {
-                             if(document.getElementById(input_id).value === ' ')
-                             {
-                                 document.getElementById(input_id).value = 'O';
-                             }
-                             status = 1;
-                         }
+                 function checkStatus(input_id)
+                 {
+                     
+                     if((document.tris.one.value === document.tris.two.value) && (document.tris.two.value === document.tris.three.value))
+                     { 
+                         alert("Finito");
                      }
-                               
+                     else if((document.tris.one.value === document.tris.four.value) && (document.tris.four.value === document.tris.seven.value))
+                     {
+                         alert("Finito");
+                     }
+                     else if((document.tris.one.value === document.tris.five.value) && (document.tris.five.value === document.tris.nine.value))
+                     {
+                         alert("Finito");
+                     }
+                     else if((document.tris.two.value === document.tris.five.value) && (document.tris.five.value === document.tris.eight.value))
+                     {
+                         alert("Finito");
+                     }
+                     else if((document.tris.three.value === document.tris.six.value) && (document.tris.six.value === document.tris.nine.value))
+                     {
+                         alert("Finito");
+                     }
+                     else if((document.tris.three.value === document.tris.five.value) && (document.tris.five.value === document.tris.seven.value))
+                     {
+                         alert("Finito");
+                     }
+                     else if((document.tris.four.value === document.tris.five.value) && (document.tris.five.value === document.tris.six.value))
+                     {
+                         alert("Finito");
+                     }
+                     else if((document.tris.seven.value === document.tris.eight.value) && (document.tris.eight.value === document.tris.nine.value))
+                     {
+                         alert("Finito");
+                     }
+                 }
+  
+                 function addSimbol(input_id)
+                 {   
+                     if((document.getElementById(input_id).value === 'X')||(document.getElementById(input_id).value === 'O'))
+                     {
+                         alert("You can't insert another symbol here.");
+                     }
+                     else if (status == 1)
+                     {
+                         if(document.getElementById(input_id).value === ' ')
+                         {
+                             document.getElementById(input_id).value = 'X';
+                         }
+                         status = 0;
+                     } 
+                     else
+                     {
+                         if(document.getElementById(input_id).value === ' ')
+                         {
+                             document.getElementById(input_id).value = 'O';
+                         }
+                         status = 1;
+                     }
+                     checkStatus(input_id);
+                 }
+  
         </script>
     </head>
     <body>
