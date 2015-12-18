@@ -1,6 +1,6 @@
 body {margin: 0; padding: 40px; background-color: black;}
 div#main {margin: auto; width: 50%;}
-input { 
+.field { 
     float:left;
 	width: 180px;
 	height: 180px;
@@ -10,6 +10,6 @@ input {
 	font-size: 60px;
 }
 
-input:hover{
+.field:hover{
 	background-color: #5291EF;
 }
