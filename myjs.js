@@ -1,5 +1,6 @@
 var PlayerTurn = false;
 var signs = ["", "", "" , "", "", "", "", "", ""];
+var score = [0, 0]
 
 function sayWinner() {
 	if (PlayerTurn) {
@@ -11,6 +12,17 @@ function sayWinner() {
 function deleteSigns() {
 	for(var i = 0; i < 10; i++) {
 	    signs[i] = "";
+	}
+}
+
+function updateScore() {
+    if (PlayerTurn) {
+	    score[0]++;
+        setScore("player1", 0);
+	}
+	else {
+		score[1]++;
+		setScore("player2", 1);
 	}
 }
 
@@ -27,6 +39,7 @@ function checkStatus() {
 	   )
 	{
 	    alert(sayWinner());
+		updateScore();
 		deleteSigns();
 		startMatch();
 	} 
@@ -52,8 +65,13 @@ function resetFields() {
 }
 
 function startMatch() {
-    alert("Inizia partita");
 	resetFields();
 }
 
+function setScore(player, index) {
+    document.getElementById(player).innerHTML = score[index] + "";
+}
+
 startMatch();
+setScore("player1", 0);
+setScore("player2", 1)

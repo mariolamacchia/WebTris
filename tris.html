@@ -11,6 +11,18 @@
   <header>
     <h1> TRIS </h1>
   </header>
+  
+  <aside>
+	<div class="right-box">
+      <p id="title1"> Player 1 </p> 		
+	  <h1 id="player1">  </p>
+	</div>
+	<div class="left-box">
+      <p id="title2"> Player 2 </p>
+	  <h1 id="player2"> </p>
+	</div>
+  </aside>
+  
   <div id="main">
     <form name="tris">
       <input class="field" type="button" id="1" onclick="this.value = insertSign(); signs[0] = this.value; checkStatus();">
@@ -24,11 +36,7 @@
       <input class="field" type="button" id="9" onclick="this.value = insertSign(); signs[8] = this.value; checkStatus();">
     </form>
   </div>
- 
-  <aside>
-    <h1> Punteggio </h1>
-  </aside>
-  
+
   </div>
   <script src="myjs.js"> </script>
   <script type="text/javascript" src="jquery-2.1.4.min.js"> </script>    

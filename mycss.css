@@ -4,15 +4,21 @@ body {margin: 0; background-color: black;}
 	overflow: auto;
 	/*border: 1px red solid;*/
 	width: 50%;
-	margin:auto;
-}
+	margin: auto;
+} 
 
-header { background-color: white; margin-bottom: 10px; text-align: center; padding: 10px 0px}
+header {background-color: white; margin-bottom: 10px; text-align: center; padding: 10px 0px; border-radius:6px}
 
 div#main {overflow: auto;}
 
+aside {float: right; text-align: center;}
+#title1 {background-color: red; float: left; border-radius: 4px; margin: 1px; padding: 3px;}
+#title2 {background-color: green; float: right; border-radius: 4px; margin: 1px; padding: 3px;}
+.left-box, .right-box { text-align: center; float:left; margin: 0px 2px;}
+aside h1 {background-color: white; border-radius: 4px;}
+
 .field { 
-    float:left;
+    float: left;
 	width: 180px;
 	height: 180px;
 	color: white;
