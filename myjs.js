@@ -1,6 +1,15 @@
 var PlayerTurn = false;
 var signs = ["", "", "" , "", "", "", "", "", ""];
+var counter = 0;
 var score = [0, 0]
+
+function checkPar() {
+	if(counter === 9) {
+		alert("Patta");
+		return true;
+	}
+	return false;
+}
 
 function sayWinner() {
 	if (PlayerTurn) {
@@ -26,8 +35,23 @@ function updateScore() {
 	}
 }
 
+function blockButton(idbutton) {
+	document.getElementById(idbutton).disabled = true;
+}
+
+function unlockButtons() {
+	var i;
+	for (i = 0; i < 9; i++) {
+		document.getElementById(i).disabled = false;
+	}
+}
+
 function checkStatus() {
-	if (
+	if(checkPar()){
+		deleteSigns();
+		startMatch();
+	}
+	else if (
 	     ((signs[0] != "") && (signs[0] === signs[1]) && (signs[1] === signs[2])) ||
 		 ((signs[0] != "") && (signs[0] === signs[4]) && (signs[4] === signs[8])) ||
 		 ((signs[0] != "") && (signs[0] === signs[3]) && (signs[3] === signs[6])) ||
@@ -42,30 +66,38 @@ function checkStatus() {
 		updateScore();
 		deleteSigns();
 		startMatch();
-	} 
+	}	
 }
 
-function insertSign() {
+function insertSign(index) {
+	counter++;
 	if (PlayerTurn) {
 		PlayerTurn = false;
-		return "O";
+		signs[index] = "O";
+		index = index;
+		document.getElementById(index).value = signs[index];
 	}
 	else {
 		PlayerTurn = true;
-	    return "X";
+	    signs[index] = "X";
+		document.getElementById(index).value = signs[index];
 	}
+	blockButton(index);
+	checkStatus();
 }
 
 function resetFields() {
 	var supp;
-	for(var i = 1; i < 10; i++) {
-		supp = i + "";
+	for(var i = 0; i < 9; i++) {
+		supp = i;
         document.getElementById(supp).value = "";
 	}
 }
 
 function startMatch() {
+	counter = 0;
 	resetFields();
+    unlockButtons();
 }
 
 function setScore(player, index) {
