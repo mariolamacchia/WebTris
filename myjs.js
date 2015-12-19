@@ -4,9 +4,21 @@ var counter = 0; //count the number of sign(if nine, mathc is par)
 var score = [0, 0] //contains the score 
 var lastsign;
 
+function  lightPlayer() {
+	if(PlayerTurn) {
+		document.getElementById("title2").style.backgroundColor = "#00FF00";
+		document.getElementById("title1").style.backgroundColor = "#9C0000";
+	}
+	else {
+		document.getElementById("title1").style.backgroundColor = "red";
+		document.getElementById("title2").style.backgroundColor = "green";
+	}
+}
+
 function invertPlayerTurn() {
 	if (PlayerTurn) PlayerTurn = false;
 	else PlayerTurn = true;
+	lightPlayer();
 }
 
 function undo() {
@@ -17,6 +29,7 @@ function undo() {
 		signs[lastsign] = "";
         invertPlayerTurn();
 	}
+	lastsign = null;
 }
 
 function checkPar() {
@@ -34,7 +47,7 @@ function sayWinner() {
 }
 
 function deleteSigns() {
-	for(var i = 0; i < 10; i++) {
+	for(var i = 0; i < 9; i++) {
 	    signs[i] = "";
 	}
 }
@@ -112,6 +125,7 @@ function resetFields() {
 function startMatch() {
 	counter = 0;
 	resetFields();
+	deleteSigns();
     unlockButtons();
 	lastsign = null;
 }
@@ -123,10 +137,11 @@ function resetAll() {
 	score[0] = 0;
 	setScore("player1", 0);
 	score[1] = 0;
-	serScore("player2", 0);
+	setScore("player2", 1);
     startMatch();
 }
 
+lightPlayer();
 startMatch();
 setScore("player1", 0);
-setScore("player2", 1)
+setScore("player2", 1);

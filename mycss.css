@@ -30,7 +30,7 @@ img:hover {
 div#main {overflow: auto;}
 
 aside {float: right; text-align: center;}
-#title1 {background-color: red; float: left; border-radius: 4px; margin: 1px; padding: 3px;}
+#title1 {background-color: #9C0000; float: left; border-radius: 4px; margin: 1px; padding: 3px;}
 #title2 {background-color: green; float: right; border-radius: 4px; margin: 1px; padding: 3px;}
 .left-box, .right-box { text-align: center; float:left; margin: 0px 2px;}
 aside h1 {background-color: white; border-radius: 4px;}
@@ -41,6 +41,7 @@ aside h1 {background-color: white; border-radius: 4px;}
 	background-color: green;
 	font-size: 20px;
 	border: none;
+	color: white;
 }
 
 .reset:hover {
