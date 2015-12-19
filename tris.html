@@ -12,6 +12,12 @@
     <h1> TRIS </h1>
   </header>
   
+  <div id="matchend">
+    <h3 id="winner"> The Winner is: </h1>
+    <input class="newmatch" id="newmatch" type="button" value="New Match" 
+     onclick="startMatch();">
+  </div>
+  
   <aside>
 	<div class="right-box">
       <p id="title1"> Player 1 </p> 		
@@ -24,7 +30,10 @@
 	<br>
 	<img src="undo.gif" onclick="undo();">
 	<form>
-      <input class="reset" type="button" value="Reset Score" onclick="resetAll();">
+      
+	  <input class="reset" type="button" value="Reset Score" 
+	   onclick="resetAll();">
+	  
 	</form>
   </aside>
   

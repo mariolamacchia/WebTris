@@ -10,9 +10,21 @@ header {
     background-color: white; 
     margin-bottom: 10px; 
 	text-align: center; 
-	padding: 10px 0px; 
+	padding: 5px 0px; 
 	border-radius: 6px;
     border: 1px #5291EF solid;
+}
+
+#matchend {
+	display: none;
+	clear: both;
+	overflow: auto;
+}
+
+#winner {
+	float: left;
+	text-align: center;
+	color: white;
 }
 
 img {
@@ -22,8 +34,8 @@ img {
 }
 
 img:hover {
-	-webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
-    filter: brightness(200%);
+	-webkit-filter: brightness(150%); /* Chrome, Safari, Opera */
+    filter: brightness(150%);
 }
 
 
@@ -35,7 +47,7 @@ aside {float: right; text-align: center;}
 .left-box, .right-box { text-align: center; float:left; margin: 0px 2px;}
 aside h1 {background-color: white; border-radius: 4px;}
 
-.reset {
+.reset, .newmatch {
 	border-radius: 4px;
 	padding: 10px;
 	background-color: green;
@@ -44,7 +56,11 @@ aside h1 {background-color: white; border-radius: 4px;}
 	color: white;
 }
 
-.reset:hover {
+.newmatch {
+    margin: 10px;
+}
+
+.reset:hover, .newmatch:hover {
 	background-color: #00FF00;
 }
 

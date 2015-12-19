@@ -44,11 +44,21 @@ function checkPar() {
 }
 
 //Say the winner through an alert
-function sayWinner() {
-	if (PlayerTurn) {
-		return "The Winner is X";
+function sayWinner(winner) {
+	document.getElementById("matchend").style.display = "block";
+	if(winner) {
+	    if (PlayerTurn) {
+		    document.getElementById("winner").style.color = "red";
+		    document.getElementById("winner").innerHTML = "The winner is: Player 1";
+	    }
+	    else {
+	        document.getElementById("winner").style.color = "green";
+		    document.getElementById("winner").innerHTML = "The winner is: Player 2";
+	    }
 	}
-	return "The Winner is O";
+	else {
+		document.getElementById("winner").innerHTML = "There is no winner";
+	}
 }
 
 //Delete the signs stored into the array signs[]
@@ -75,6 +85,16 @@ function blockButton(idbutton) {
 	document.getElementById(idbutton).disabled = true;
 }
 
+//Block All the buttons
+function blockAll() {
+    var i;
+	for (i = 0; i < 9; i++) {
+		if(document.getElementById(i).disabled === false) {
+			document.getElementById(i).disabled = true;
+		}
+	}
+}
+
 //Unlock all the buttons
 function unlockButtons() {
 	var i;
@@ -96,14 +116,15 @@ function checkStatus() {
 		 ((signs[6] != "") && (signs[6] === signs[7]) && (signs[7] === signs[8]))
 	   )
 	{
-	    alert(sayWinner());
+	    sayWinner(true);
 		updateScore();
-		deleteSigns();
-		startMatch();
+		lastsign = null;
+		blockAll();
 	}
 	else if(checkPar()){
-		deleteSigns();
-		startMatch();
+        sayWinner(false);
+		lastsign = null;
+		blockAll();
 	}
 }
 
@@ -136,6 +157,7 @@ function resetFields() {
 
 //start a new match 
 function startMatch() {
+	document.getElementById("matchend").style.display = "none";
 	counter = 0;
 	resetFields();
 	deleteSigns();
