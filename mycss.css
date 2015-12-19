@@ -1,5 +1,16 @@
-body {margin: 0; padding: 40px; background-color: black;}
-div#main {margin: auto; width: 50%;}
+body {margin: 0; background-color: black;}
+
+.container {
+	overflow: auto;
+	/*border: 1px red solid;*/
+	width: 50%;
+	margin:auto;
+}
+
+header { background-color: white; margin-bottom: 10px; text-align: center; padding: 10px 0px}
+
+div#main {overflow: auto;}
+
 .field { 
     float:left;
 	width: 180px;
