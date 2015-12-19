@@ -1,11 +1,26 @@
-var PlayerTurn = false;
+var PlayerTurn = false; //false = player1's turn, true = player2's turn
 var signs = ["", "", "" , "", "", "", "", "", ""];
-var counter = 0;
-var score = [0, 0]
+var counter = 0; //count the number of sign(if nine, mathc is par)
+var score = [0, 0] //contains the score 
+var lastsign;
+
+function invertPlayerTurn() {
+	if (PlayerTurn) PlayerTurn = false;
+	else PlayerTurn = true;
+}
+
+function undo() {
+	if(lastsign !== null) {
+	    document.getElementById(lastsign).value = "";
+		document.getElementById(lastsign).disabled = false;
+		counter--;
+		signs[lastsign] = "";
+        invertPlayerTurn();
+	}
+}
 
 function checkPar() {
 	if(counter === 9) {
-		alert("Patta");
 		return true;
 	}
 	return false;
@@ -47,11 +62,7 @@ function unlockButtons() {
 }
 
 function checkStatus() {
-	if(checkPar()){
-		deleteSigns();
-		startMatch();
-	}
-	else if (
+    if (
 	     ((signs[0] != "") && (signs[0] === signs[1]) && (signs[1] === signs[2])) ||
 		 ((signs[0] != "") && (signs[0] === signs[4]) && (signs[4] === signs[8])) ||
 		 ((signs[0] != "") && (signs[0] === signs[3]) && (signs[3] === signs[6])) ||
@@ -66,22 +77,26 @@ function checkStatus() {
 		updateScore();
 		deleteSigns();
 		startMatch();
-	}	
+	}
+	else if(checkPar()){
+		deleteSigns();
+		startMatch();
+	}
 }
 
 function insertSign(index) {
 	counter++;
 	if (PlayerTurn) {
-		PlayerTurn = false;
+		invertPlayerTurn();
 		signs[index] = "O";
-		index = index;
 		document.getElementById(index).value = signs[index];
 	}
 	else {
-		PlayerTurn = true;
+		invertPlayerTurn();
 	    signs[index] = "X";
 		document.getElementById(index).value = signs[index];
 	}
+	lastsign = index;
 	blockButton(index);
 	checkStatus();
 }
@@ -98,10 +113,18 @@ function startMatch() {
 	counter = 0;
 	resetFields();
     unlockButtons();
+	lastsign = null;
 }
 
 function setScore(player, index) {
     document.getElementById(player).innerHTML = score[index] + "";
+}
+function resetAll() {
+	score[0] = 0;
+	setScore("player1", 0);
+	score[1] = 0;
+	serScore("player2", 0);
+    startMatch();
 }
 
 startMatch();

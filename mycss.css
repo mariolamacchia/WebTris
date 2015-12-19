@@ -2,12 +2,30 @@ body {margin: 0; background-color: black;}
 
 .container {
 	overflow: auto;
-	/*border: 1px red solid;*/
 	width: 50%;
 	margin: auto;
 } 
 
-header {background-color: white; margin-bottom: 10px; text-align: center; padding: 10px 0px; border-radius:6px}
+header { 
+    background-color: white; 
+    margin-bottom: 10px; 
+	text-align: center; 
+	padding: 10px 0px; 
+	border-radius: 6px;
+    border: 1px #5291EF solid;
+}
+
+img {
+    width:70px;
+	height:70px;
+	margin-bottom: 10px;
+}
+
+img:hover {
+	-webkit-filter: brightness(200%); /* Chrome, Safari, Opera */
+    filter: brightness(200%);
+}
+
 
 div#main {overflow: auto;}
 
@@ -16,6 +34,18 @@ aside {float: right; text-align: center;}
 #title2 {background-color: green; float: right; border-radius: 4px; margin: 1px; padding: 3px;}
 .left-box, .right-box { text-align: center; float:left; margin: 0px 2px;}
 aside h1 {background-color: white; border-radius: 4px;}
+
+.reset {
+	border-radius: 4px;
+	padding: 10px;
+	background-color: green;
+	font-size: 20px;
+	border: none;
+}
+
+.reset:hover {
+	background-color: #00FF00;
+}
 
 .field { 
     float: left;
@@ -30,3 +60,4 @@ aside h1 {background-color: white; border-radius: 4px;}
 .field:hover{
 	background-color: #5291EF;
 }
+
