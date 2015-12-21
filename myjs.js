@@ -7,12 +7,12 @@ var lastsign;
 //ligh the tag <p> of player who has to put the sign
 function lightPlayer() {
   if(PlayerTurn) {
-    document.getElementById("title2").style.backgroundColor = "#00FF00";
-	document.getElementById("title1").style.backgroundColor = "#9C0000";
+    $('#title2').css('backgroundColor', '#00FF00');
+    $('#title1').css('backgroundColor', '#9C0000');
   }
   else {
-	document.getElementById("title1").style.backgroundColor = "red";
-    document.getElementById("title2").style.backgroundColor = "green";
+    $('#title1').css('backgroundColor', 'red');
+    $('#title2').css('backgroundColor', 'green');
   }
 }
 
@@ -26,10 +26,10 @@ function invertPlayerTurn() {
 //Delete the last insertion
 function undo() {
   if(lastsign !== null) {
-    document.getElementById(lastsign).value = "";
-    document.getElementById(lastsign).disabled = false;
+    $('#'+lastsign).prop('value', '');
+    $('#'+lastsign).prop('disabled', false);
     counter--;
-    signs[lastsign] = "";
+    signs[lastsign] = '';
     invertPlayerTurn();
   }
   lastsign = null;
@@ -45,26 +45,27 @@ function checkPar() {
 
 //Say the winner through an alert
 function sayWinner(winner) {
-  document.getElementById("matchend").style.display = "block";
+  $('#matchend').css('display', 'block');
   if(winner) {
     if (PlayerTurn) {
-      document.getElementById("winner").style.color = "red";
-      document.getElementById("winner").innerHTML = "The winner is: Player 1";
+      $('#winner').css('color', 'red');
+      $('#winner').prop('innerHTML', 'The winner is: Player 1');
     }
     else {
-    document.getElementById("winner").style.color = "green";
-    document.getElementById("winner").innerHTML = "The winner is: Player 2";
+      $('#winner').css('color', 'red');
+      $('#winner').prop('innerHTML', 'The winner is: Player 2');
     }
   }
   else {
-    document.getElementById("winner").innerHTML = "There is no winner";
+    $('#winner').css('color', 'white');
+    $('#winner').prop('innerHTML', 'There is no winner');
   }
 }
 
 //Delete the signs stored into the array signs[]
 function deleteSigns() {
   for(var i = 0; i < 9; i++) {
-    signs[i] = "";
+    signs[i] = '';
   }
 }
 
@@ -72,25 +73,25 @@ function deleteSigns() {
 function updateScore() {
   if (PlayerTurn) {
     score[0]++;
-    setScore("player1", 0);
+    setScore('player1', 0);
   }
   else {
     score[1]++;
-    setScore("player2", 1);
+    setScore('player2', 1);
   }
 }
 
 //Block the button after his pression
 function blockButton(idbutton) {
-  document.getElementById(idbutton).disabled = true;
+  $('#'+idbutton).prop('disabled', true);
 }
 
 //Block All the buttons
 function blockAll() {
   var i;
   for (i = 0; i < 9; i++) {
-	if(document.getElementById(i).disabled === false) {
-	  document.getElementById(i).disabled = true;
+	  if($('#'+i).prop('disabled') === false) {
+	    $('#'+i).prop('disabled', true);
     }
   }
 }
@@ -99,21 +100,21 @@ function blockAll() {
 function unlockButtons() {
   var i;
   for (i = 0; i < 9; i++) {
-    document.getElementById(i).disabled = false;
+    $('#'+i).prop('disabled', false);
   }
 }
 
 //Check if a player has won
 function checkStatus() {
   if (
-    ((signs[0] != "") && (signs[0] === signs[1]) && (signs[1] === signs[2])) ||
-    ((signs[0] != "") && (signs[0] === signs[4]) && (signs[4] === signs[8])) ||
-    ((signs[0] != "") && (signs[0] === signs[3]) && (signs[3] === signs[6])) ||
-    ((signs[1] != "") && (signs[1] === signs[4]) && (signs[4] === signs[7])) ||
-    ((signs[2] != "") && (signs[2] === signs[5]) && (signs[5] === signs[8])) ||
-    ((signs[2] != "") && (signs[2] === signs[4]) && (signs[4] === signs[6])) ||
-    ((signs[3] != "") && (signs[3] === signs[4]) && (signs[4] === signs[5])) ||
-    ((signs[6] != "") && (signs[6] === signs[7]) && (signs[7] === signs[8]))
+    ((signs[0] != '') && (signs[0] === signs[1]) && (signs[1] === signs[2])) ||
+    ((signs[0] != '') && (signs[0] === signs[4]) && (signs[4] === signs[8])) ||
+    ((signs[0] != '') && (signs[0] === signs[3]) && (signs[3] === signs[6])) ||
+    ((signs[1] != '') && (signs[1] === signs[4]) && (signs[4] === signs[7])) ||
+    ((signs[2] != '') && (signs[2] === signs[5]) && (signs[5] === signs[8])) ||
+    ((signs[2] != '') && (signs[2] === signs[4]) && (signs[4] === signs[6])) ||
+    ((signs[3] != '') && (signs[3] === signs[4]) && (signs[4] === signs[5])) ||
+    ((signs[6] != '') && (signs[6] === signs[7]) && (signs[7] === signs[8]))
   )
   {
     sayWinner(true);
@@ -133,13 +134,13 @@ function insertSign(index) {
   counter++;
   if (PlayerTurn) {
     invertPlayerTurn();
-    signs[index] = "O";
-    document.getElementById(index).value = signs[index];
+    signs[index] = 'O';
+    $('#'+index).prop('value', signs[index]);
   }
   else {
     invertPlayerTurn();
-    signs[index] = "X";
-    document.getElementById(index).value = signs[index];
+    signs[index] = 'X';
+    $('#'+index).prop('value', signs[index]);
   }
   lastsign = index;
   blockButton(index);
@@ -151,13 +152,13 @@ function resetFields() {
   var supp;
   for(var i = 0; i < 9; i++) {
     supp = i;
-    document.getElementById(supp).value = "";
+    $('#'+supp).prop('value', '');
   }
 }
 
 //start a new match 
 function startMatch() {
-  document.getElementById("matchend").style.display = "none";
+  $('#matchend').css('display', 'none');
   counter = 0;
   resetFields();
   deleteSigns();
@@ -167,19 +168,21 @@ function startMatch() {
 
 //setScore to ""
 function setScore(player, index) {
-  document.getElementById(player).innerHTML = score[index] + "";
+  $('#'+player).prop('innerHTML', score[index]);
 }
 
 //delete score and start a new match 
 function resetAll() {
   score[0] = 0;
-  setScore("player1", 0);
+  setScore('player1', 0);
   score[1] = 0;
-  setScore("player2", 1);
+  setScore('player2', 1);
   startMatch();
 }
 
-lightPlayer();
-startMatch();
-setScore("player1", 0);
-setScore("player2", 1);
+$(document).ready(function(){
+  lightPlayer();
+  startMatch();
+  setScore('player1', 0);
+  setScore('player2', 1);
+});
