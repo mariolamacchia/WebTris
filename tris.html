@@ -3,7 +3,7 @@
 <head>
   <title> WEBTRIS </title>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="mycss.css">
+  <link rel="stylesheet" type="text/css" href="style/mycss.css">
 </head>
 
 <body>
@@ -11,34 +11,34 @@
     <header>
       <h1> TRIS </h1>
     </header>
-  
+
     <div id="matchend">
-      <h3 id="winner"> </h1>
-      <input class="newmatch" id="newmatch" type="button" value="New Match" 
+      <h3 id="result"> </h1>
+      <input class="newmatch" id="newmatch" type="button" value="New Match"
       onclick="startMatch();">
     </div>
-  
+
     <aside>
 	    <div class="right-box">
-        <p id="title1"> Player 1 </p> 		
-	      <h1 id="player1">  </p>
+        <p class="title" id="title1"> Player 1 </p>
+	      <h1 class="player" id="player1">  </p>
 	    </div>
 	    <div class="left-box">
-        <p id="title2"> Player 2 </p>
-	      <h1 id="player2"> </p>
+        <p class="title" id="title2"> Player 2 </p>
+	      <h1 class="player" id="player2"> </p>
 	    </div>
 	    <br>
-	    <img src="undo.gif" onclick="undo();">
+	    <img src="images/undo.gif" onclick="undo();">
 	    <form>
-        <input class="reset" type="button" value="Reset Score" 
+        <input class="reset" type="button" value="Reset Score"
 	      onclick="resetAll();">
 	    </form>
     </aside>
-  
+
     <div id="main">
       <form name="tris">
         <input class="field" type="button" id="0" onclick="insertSign(0);">
-	      <input class="field" type="button" id="1" onclick="insertSign(1);">
+	    <input class="field" type="button" id="1" onclick="insertSign(1);">
         <input class="field" type="button" id="2" onclick="insertSign(2);">
         <input class="field" type="button" id="3" onclick="insertSign(3);">
         <input class="field" type="button" id="4" onclick="insertSign(4);">
@@ -49,8 +49,8 @@
       </form>
     </div>
   </div>
-  
-  <script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>   
-  <script src="myjs.js"> </script> 
+
+  <script src="bower_components/jquery/dist/jquery.min.js"> </script>
+  <script src="scripts/myjs.js"> </script>
 </body>
 </html>

@@ -1,25 +1,23 @@
 var PlayerTurn = false; //false = player1's turn, true = player2's turn
 var signs = ['', '', '', '', '', '', '', '', ''];
 var counter = 0; //count the number of sign(if nine, mathc is par)
-var score = [0, 0] //contains the score 
+var score = [0, 0]; //contains the score
 var lastsign;
 
 //ligh the tag <p> of player who has to put the sign
 function lightPlayer() {
+  $('.title').removeClass('active');
   if(PlayerTurn) {
-    $('#title2').css('backgroundColor', '#00FF00');
-    $('#title1').css('backgroundColor', '#9C0000');
+    $('#title2').addClass('active');
   }
   else {
-    $('#title1').css('backgroundColor', 'red');
-    $('#title2').css('backgroundColor', 'green');
+    $('#title1').addClass('active');
   }
 }
 
 //Invert the Player turn
 function invertPlayerTurn() {
-  if (PlayerTurn) PlayerTurn = false;
-  else PlayerTurn = true;
+  PlayerTurn = !PlayerTurn;
   lightPlayer();
 }
 
@@ -37,28 +35,24 @@ function undo() {
 
 //Check if the match is equal
 function checkPar() {
-  if(counter === 9) {
-    return true;
-  }
-  return false;
+  return (counter === 9);
 }
 
 //Say the winner through an alert
 function sayWinner(winner) {
-  $('#matchend').css('display', 'block');
+  $('#matchend').show();
   if(winner) {
+    $('#result').addClass('win');
     if (PlayerTurn) {
-      $('#winner').css('color', 'red');
-      $('#winner').prop('innerHTML', 'The winner is: Player 1');
+      $('#result').text('The winner is: Player 1');
     }
     else {
-      $('#winner').css('color', 'red');
-      $('#winner').prop('innerHTML', 'The winner is: Player 2');
+      $('#result').text('The winner is: Player 2');
     }
   }
   else {
-    $('#winner').css('color', 'white');
-    $('#winner').prop('innerHTML', 'There is no winner');
+    $('#result').removeClass('win');
+    $('#result').text('There is no winner');
   }
 }
 
@@ -69,7 +63,7 @@ function deleteSigns() {
   }
 }
 
-//increase the score 
+//increase the score
 function updateScore() {
   if (PlayerTurn) {
     score[0]++;
@@ -88,60 +82,48 @@ function blockButton(idbutton) {
 
 //Block All the buttons
 function blockAll() {
-  var i;
-  for (i = 0; i < 9; i++) {
-	  if($('#'+i).prop('disabled') === false) {
-	    $('#'+i).prop('disabled', true);
-    }
-  }
+  $('.field').prop('disabled', true);
 }
 
 //Unlock all the buttons
 function unlockButtons() {
-  var i;
-  for (i = 0; i < 9; i++) {
-    $('#'+i).prop('disabled', false);
-  }
+  $('.field').prop('disabled', false);
 }
 
 //Check if a player has won
 function checkStatus() {
   if (
-    ((signs[0] != '') && (signs[0] === signs[1]) && (signs[1] === signs[2])) ||
-    ((signs[0] != '') && (signs[0] === signs[4]) && (signs[4] === signs[8])) ||
-    ((signs[0] != '') && (signs[0] === signs[3]) && (signs[3] === signs[6])) ||
-    ((signs[1] != '') && (signs[1] === signs[4]) && (signs[4] === signs[7])) ||
-    ((signs[2] != '') && (signs[2] === signs[5]) && (signs[5] === signs[8])) ||
-    ((signs[2] != '') && (signs[2] === signs[4]) && (signs[4] === signs[6])) ||
-    ((signs[3] != '') && (signs[3] === signs[4]) && (signs[4] === signs[5])) ||
-    ((signs[6] != '') && (signs[6] === signs[7]) && (signs[7] === signs[8]))
-  )
-  {
+    ((signs[0] !== '') && (signs[0] === signs[1]) && (signs[1] === signs[2])) ||
+    ((signs[0] !== '') && (signs[0] === signs[4]) && (signs[4] === signs[8])) ||
+    ((signs[0] !== '') && (signs[0] === signs[3]) && (signs[3] === signs[6])) ||
+    ((signs[1] !== '') && (signs[1] === signs[4]) && (signs[4] === signs[7])) ||
+    ((signs[2] !== '') && (signs[2] === signs[5]) && (signs[5] === signs[8])) ||
+    ((signs[2] !== '') && (signs[2] === signs[4]) && (signs[4] === signs[6])) ||
+    ((signs[3] !== '') && (signs[3] === signs[4]) && (signs[4] === signs[5])) ||
+    ((signs[6] !== '') && (signs[6] === signs[7]) && (signs[7] === signs[8]))
+  ) {
     sayWinner(true);
     updateScore();
     lastsign = null;
     blockAll();
-  }
-  else if(checkPar()) {
+  } else if(checkPar()) {
     sayWinner(false);
     lastsign = null;
     blockAll();
   }
 }
 
-//Insert the sign into the button 
+//Insert the sign into the button
 function insertSign(index) {
   counter++;
   if (PlayerTurn) {
     invertPlayerTurn();
     signs[index] = 'O';
-    $('#'+index).prop('value', signs[index]);
-  }
-  else {
+  } else {
     invertPlayerTurn();
     signs[index] = 'X';
-    $('#'+index).prop('value', signs[index]);
   }
+  $('#'+index).val(signs[index]);
   lastsign = index;
   blockButton(index);
   checkStatus();
@@ -149,16 +131,12 @@ function insertSign(index) {
 
 //reset the buttons' values
 function resetFields() {
-  var supp;
-  for(var i = 0; i < 9; i++) {
-    supp = i;
-    $('#'+supp).prop('value', '');
-  }
+  $('.field').val('');
 }
 
-//start a new match 
+//start a new match
 function startMatch() {
-  $('#matchend').css('display', 'none');
+  $('#matchend').hide();
   counter = 0;
   resetFields();
   deleteSigns();
@@ -168,10 +146,10 @@ function startMatch() {
 
 //setScore to ""
 function setScore(player, index) {
-  $('#'+player).prop('innerHTML', score[index]);
+  $('#'+player).text(score[index]);
 }
 
-//delete score and start a new match 
+//delete score and start a new match
 function resetAll() {
   score[0] = 0;
   setScore('player1', 0);
