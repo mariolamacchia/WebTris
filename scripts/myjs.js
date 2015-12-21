@@ -82,20 +82,12 @@ function blockButton(idbutton) {
 
 //Block All the buttons
 function blockAll() {
-  var i;
-  for (i = 0; i < 9; i++) {
-	  if($('#'+i).prop('disabled') === false) {
-	    $('#'+i).prop('disabled', true);
-    }
-  }
+  $('.field').prop('disabled', true);
 }
 
 //Unlock all the buttons
 function unlockButtons() {
-  var i;
-  for (i = 0; i < 9; i++) {
-    $('#'+i).prop('disabled', false);
-  }
+  $('.field').prop('disabled', false);
 }
 
 //Check if a player has won
