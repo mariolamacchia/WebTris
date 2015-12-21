@@ -4,6 +4,13 @@ var counter = 0; //count the number of sign(if nine, mathc is par)
 var score = [0, 0]; //contains the score
 var lastsign;
 
+//Resize the botton in 1:1
+function resizeButtons() {
+    var width;
+    width = $('#0').css('width');
+    $('.field').css('height', width);    
+}
+
 //ligh the tag <p> of player who has to put the sign
 function lightPlayer() {
   $('.title').removeClass('active');
@@ -163,4 +170,8 @@ $(document).ready(function(){
   startMatch();
   setScore('player1', 0);
   setScore('player2', 1);
+  resizeButtons();
+  $( window ).resize(function() {
+    resizeButtons();
+  });
 });

@@ -1,3 +1,43 @@
+/* RESPONSIVE */
+* {
+  box-sizing: border-box;
+}
+
+.row:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+[class*="col-"] {
+  float: left;
+  border: 1px red solid;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+
+/*           CSS          */
+
 body {
   margin: 0;
   background-color: black;
@@ -5,8 +45,9 @@ body {
 
 .container {
   overflow: auto;
-  width: 50%;
+  width: 70%;
   margin: auto;
+  margin-top: 2.5%;
 }
 
 header {
@@ -34,11 +75,10 @@ header {
 }
 
 img {
-  width:70px;
-  height:70px;
-  margin-bottom: 10px;
+  width:35%;
+  height:35%;
 }
-img:hover {
+img:active, img:hover {
   -webkit-filter: brightness(150%); /* Chrome, Safari, Opera */
   filter: brightness(150%);
 }
@@ -47,7 +87,6 @@ img:hover {
 div#main {overflow: auto;}
 
 aside {
-  float: right;
   text-align: center;
 }
 aside h1 {
@@ -80,6 +119,10 @@ aside h1 {
   float: left;
   margin: 0px 2px;
 }
+.right-box {
+  float: right;
+}
+
 
 .reset, .newmatch {
   border-radius: 4px;
@@ -94,20 +137,19 @@ aside h1 {
   margin: 10px;
 }
 
-.reset:hover, .newmatch:hover {
+.reset:active, .newmatch:active, .reset:hover, .newmatch:hover {
   background-color: #00FF00;
 }
 
 .field {
-  float: left;
-  width: 180px;
-  height: 180px;
+  float:left;
+  width: 33%;
   color: white;
   background-color: blue;
   border: 1px white solid;
   font-size: 60px;
 }
 
-.field:hover {
+.field:active, .field:hover {
   background-color: #5291EF;
 }
