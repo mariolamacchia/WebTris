@@ -131,11 +131,7 @@ function insertSign(index) {
 
 //reset the buttons' values
 function resetFields() {
-  var supp;
-  for(var i = 0; i < 9; i++) {
-    supp = i;
-    $('#'+supp).val('');
-  }
+  $('.field').val('');
 }
 
 //start a new match
