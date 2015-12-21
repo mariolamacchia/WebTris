@@ -6,13 +6,12 @@ var lastsign;
 
 //ligh the tag <p> of player who has to put the sign
 function lightPlayer() {
+  $('.title').removeClass('active');
   if(PlayerTurn) {
-    $('#title2').css('backgroundColor', '#00FF00');
-    $('#title1').css('backgroundColor', '#9C0000');
+    $('#title2').addClass('active');
   }
   else {
-    $('#title1').css('backgroundColor', 'red');
-    $('#title2').css('backgroundColor', 'green');
+    $('#title1').addClass('active');
   }
 }
 
@@ -41,20 +40,19 @@ function checkPar() {
 
 //Say the winner through an alert
 function sayWinner(winner) {
-  $('#matchend').css('display', 'block');
+  $('#matchend').show();
   if(winner) {
+    $('#result').addClass('win');
     if (PlayerTurn) {
-      $('#winner').css('color', 'red');
-      $('#winner').prop('innerHTML', 'The winner is: Player 1');
+      $('#result').text('The winner is: Player 1');
     }
     else {
-      $('#winner').css('color', 'red');
-      $('#winner').prop('innerHTML', 'The winner is: Player 2');
+      $('#result').text('The winner is: Player 2');
     }
   }
   else {
-    $('#winner').css('color', 'white');
-    $('#winner').prop('innerHTML', 'There is no winner');
+    $('#result').removeClass('win');
+    $('#result').text('There is no winner');
   }
 }
 
@@ -133,7 +131,7 @@ function insertSign(index) {
     invertPlayerTurn();
     signs[index] = 'X';
   }
-  $('#'+index).prop('value', signs[index]);
+  $('#'+index).val(signs[index]);
   lastsign = index;
   blockButton(index);
   checkStatus();
@@ -144,13 +142,13 @@ function resetFields() {
   var supp;
   for(var i = 0; i < 9; i++) {
     supp = i;
-    $('#'+supp).prop('value', '');
+    $('#'+supp).val('');
   }
 }
 
 //start a new match
 function startMatch() {
-  $('#matchend').css('display', 'none');
+  $('#matchend').hide();
   counter = 0;
   resetFields();
   deleteSigns();
@@ -160,7 +158,7 @@ function startMatch() {
 
 //setScore to ""
 function setScore(player, index) {
-  $('#'+player).prop('innerHTML', score[index]);
+  $('#'+player).text(score[index]);
 }
 
 //delete score and start a new match

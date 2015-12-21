@@ -1,5 +1,5 @@
 body {
-  margin: 0; 
+  margin: 0;
   background-color: black;
 }
 
@@ -7,13 +7,13 @@ body {
   overflow: auto;
   width: 50%;
   margin: auto;
-} 
+}
 
-header { 
-  background-color: white; 
-  margin-bottom: 10px; 
-	text-align: center; 
-	padding: 5px 0px; 
+header {
+  background-color: white;
+  margin-bottom: 10px;
+	text-align: center;
+	padding: 5px 0px;
 	border-radius: 6px;
   border: 1px #5291EF solid;
 }
@@ -24,10 +24,13 @@ header {
   overflow: auto;
 }
 
-#winner {
+#result {
   float: left;
   text-align: center;
   color: white;
+}
+#result.win {
+  color: red;
 }
 
 img {
@@ -44,26 +47,37 @@ img:hover {
 div#main {overflow: auto;}
 
 aside {
-  float: right; 
+  float: right;
   text-align: center;
 }
 aside h1 {
-  background-color: white; 
+  background-color: white;
   border-radius: 4px;
 }
 
 #title1, #title2 {
-  background-color: #9C0000; 
-  float: left; 
-  border-radius: 4px; 
-  margin: 1px; 
+  float: left;
+  border-radius: 4px;
+  margin: 1px;
   padding: 3px;
 }
-#title2 {float: right;}
+#title1 {
+    background-color: green;
+}
+#title1.active {
+    background-color: #00FF00;
+}
+#title2 {
+    float: right;
+    background-color: #9C0000;
+}
+#title2.active {
+    background-color: red;
+}
 
 .left-box, .right-box {
-  text-align: center; 
-  float: left; 
+  text-align: center;
+  float: left;
   margin: 0px 2px;
 }
 
@@ -84,7 +98,7 @@ aside h1 {
   background-color: #00FF00;
 }
 
-.field { 
+.field {
   float: left;
   width: 180px;
   height: 180px;
@@ -97,4 +111,3 @@ aside h1 {
 .field:hover {
   background-color: #5291EF;
 }
-
