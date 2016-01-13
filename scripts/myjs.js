@@ -1,7 +1,7 @@
 //Resize the botton in 1:1
 function resizeButtons() {
     var width;
-    width = $('#0').css('width');
+    width = $('#00').css('width');
     $('.field').css('height', width);
 }
 
