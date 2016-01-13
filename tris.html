@@ -13,19 +13,18 @@
     <aside class="col-12" id="mainaside">
       <div class="left-box">
         <p class="title" id="title1"> Player 1 </p>
-        <h1 class="player" id="player1">  </p>
+        <h1 class="player" id="player1">0</p>
       </div>
       <div class="right-box">
         <p class="title" id="title2"> Player 2 </p>
-        <h1 class="player" id="player2"> </p>
+        <h1 class="player" id="player2">0</p>
       </div>
       <br>
       <div id="resetdiv">
-          <input class="reset" type="button" value="Reset Score"
-           onclick="resetAll();">
+          <input class="reset" type="button" value="Reset Score">
       </div>
       <div>
-        <img src="images/undo.gif" onclick="undo();">
+        <img src="images/undo.gif" class=undo>
       </div>
     </aside>
 
@@ -33,26 +32,26 @@
 
   <div id="main">
     <form name="tris">
-        <input class="field" type="button" id="0" onclick="insertSign(0);">
-        <input class="field" type="button" id="1" onclick="insertSign(1);">
-        <input class="field" type="button" id="2" onclick="insertSign(2);">
-        <input class="field" type="button" id="3" onclick="insertSign(3);">
-        <input class="field" type="button" id="4" onclick="insertSign(4);">
-        <input class="field" type="button" id="5" onclick="insertSign(5);">
-        <input class="field" type="button" id="6" onclick="insertSign(6);">
-        <input class="field" type="button" id="7" onclick="insertSign(7);">
-        <input class="field" type="button" id="8" onclick="insertSign(8);">
+        <input class="field" type="button" id="00">
+        <input class="field" type="button" id="01">
+        <input class="field" type="button" id="02">
+        <input class="field" type="button" id="10">
+        <input class="field" type="button" id="11">
+        <input class="field" type="button" id="12">
+        <input class="field" type="button" id="20">
+        <input class="field" type="button" id="21">
+        <input class="field" type="button" id="22">
     </form>
   </div>
 
   <div id="matchend">
     <h3 id="result"> </h1>
     <br>
-    <input class="newmatch" id="newmatch" type="button" value="New Match"
-    onclick="startMatch();">
+    <input class="newmatch" id="newmatch" type="button" value="New Match">
   </div>
 
   <script src="bower_components/jquery/dist/jquery.min.js"> </script>
+  <script src="scripts/TicTacToe.js"> </script>
   <script src="scripts/myjs.js"> </script>
 </body>
 </html>
