@@ -1,0 +1,25 @@
+{
+  "name": "webtris",
+  "version": "1.0.0",
+  "description": "TicTacToe easy to implement",
+  "main": "TicTacToe.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/messinesegianluca/webtris.git"
+  },
+  "keywords": [
+    "tictactoe",
+    "tic-tac-toe",
+    "tris",
+    "xsos"
+  ],
+  "author": "Gianluca Messinese <gianluca.messi1@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/messinesegianluca/webtris/issues"
+  },
+  "homepage": "https://github.com/messinesegianluca/webtris#readme"
+}
