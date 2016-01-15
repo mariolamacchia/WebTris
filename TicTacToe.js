@@ -30,7 +30,12 @@ TicTacToe.prototype.getCurrentPlayer = function() {
 };
 
 TicTacToe.prototype.getCell = function(x, y) {
-  return this.signs[y * 3 + x];
+	var index;
+    if (!y) {
+  	  index = x;
+    } else {
+  	  index = y * 3 + x;
+    }
 };
 
 //Insert the sign into the button
@@ -38,7 +43,15 @@ TicTacToe.prototype.insert = function(x, y) {
   if (!this.isOpen) {
     return false;
   }
-  var index = y * 3 + x;
+  var index;
+  if (!y) {
+	  index = x;
+  } else {
+	  index = y * 3 + x;
+  }
+  if (index >= this.signs.length) {
+	  return false;
+  }
   if (this.signs[index]) {
     return false;
   }
