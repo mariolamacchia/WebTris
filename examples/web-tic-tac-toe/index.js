@@ -7,3 +7,4 @@ app.get('/scripts/TicTacToe.js', function(req, res) {
 });
 app.use(express.static(__dirname));
 app.listen(8080);
+console.log('TicTacToe running on localhost:8080!');
